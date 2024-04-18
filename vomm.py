@@ -79,7 +79,7 @@ def count_occurrences(training_data, d=4, alphabet_size = None):
     if alphabet_size == None:
         alphabet_size = max(training_data) + 1
 
-    counts = dict([(x, np.zeros(alphabet_size,dtype=np.int)) for x in contexts])
+    counts = dict([(x, np.zeros(alphabet_size,dtype=np.int32)) for x in contexts])
 
     # Include the null context as well.
     counts[()] = np.bincount(training_data,minlength = alphabet_size)
@@ -271,11 +271,11 @@ class ppm:
         """
 
         if prefix != None:
-            new_data = np.zeros(len(prefix) + length,dtype=np.int)
+            new_data = np.zeros(len(prefix) + length,dtype=np.int32)
             new_data[:len(prefix)] = prefix
             start = len(prefix)
         else:
-            new_data = np.zeros(length,dtype=np.int)
+            new_data = np.zeros(length,dtype=np.int32)
             start = 0
 
         for t in range(start,len(new_data)):
@@ -702,11 +702,11 @@ class PPM_words:
             use_me = tqdm
 
         if prefix != None:
-            new_data = np.zeros(len(prefix) + length,dtype=np.int)
+            new_data = np.zeros(len(prefix) + length,dtype=np.int32)
             new_data[:len(prefix)] = prefix
             start = len(prefix)
         else:
-            new_data = np.zeros(length,dtype=np.int)
+            new_data = np.zeros(length,dtype=np.int32)
             start = 0
 
         scratch_pdf = np.zeros(self.alphabet_size)
