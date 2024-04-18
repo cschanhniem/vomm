@@ -192,11 +192,12 @@ class ppm:
             context_by_length[len(x)].append(x)
 
         # Now lets generate a dictionary look up context s -> possible context xs.
-        self.context_child = {}
+        self.context_child = defaultdict(list)
 
         for k in range(self.d):
-            for x in context_by_length[k]:
-                self.context_child[x] = [ y for y in context_by_length[k+1] if y[1:] == x ]
+            for y in context_by_length[k+1]:
+                x = y[1:]
+                self.context_child[x].append(y)
 
         for x in context_by_length[self.d]:
             self.context_child[x] = []
