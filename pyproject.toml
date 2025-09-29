@@ -14,11 +14,5 @@ dependencies = [
 ]
 
 [build-system]
-requires = ["setuptools>=61.0.0"]
-build-backend = "setuptools.build_meta"
-
-
-# --- This is the key section for including your notebook ---
-[tool.setuptools.package-data]
-"samplenotebooks" = ["notebooks/*.ipynb"]
-
+requires = ["hatchling"]
+build-backend = "hatchling.build"
